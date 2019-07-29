@@ -46,10 +46,10 @@ class Url:
 
 		if len(self.urlstring) > 0:
 			self.protocol = urlparse.protocol(self.urlstring)
-			self.hostname = urlparse.hostname(self.urlstring)
-			self.pathname = urlparse.pathname(self.urlstring)
-			self.query = urlparse.query(self.urlstring)
-			self.hash = urlparse.hash(self.urlstring)
+			# self.hostname = parser.hostname(self.urlstring)
+			# self.pathname = parser.pathname(self.urlstring)
+			# self.query = parser.query(self.urlstring)
+			# self.hash = parser.hash(self.urlstring)
 
 	def to_string(self):
 		return self.protocol + '://' + self.hostname + self.pathname + self.query + self.hash

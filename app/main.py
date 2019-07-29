@@ -12,7 +12,7 @@ class application:
 		self.url = None
 
 	def seed(self):
-		seed_file = open('.\\data\\seed.txt', 'r')
+		seed_file = open('./data/seed.txt', 'r')
 		seed_url = seed_file.read()
 
 		logger.info('Loading seed url from file: %s', seed_url)

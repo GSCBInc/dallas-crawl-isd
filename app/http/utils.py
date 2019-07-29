@@ -13,6 +13,7 @@ class client:
 
 class urlparse:
 
+	@staticmethod
 	def protocol(url):
 		protocol = None
 		try:
@@ -23,6 +24,7 @@ class urlparse:
 		logger.info('Parsed url protocol: %s', protocol)
 		return protocol
 
+	@staticmethod
 	def hostname(url):
 		hostname = re.sub(r'https?:\/\/', '', url)
 		hostname = re.sub(r'\/.*', '', hostname)
@@ -30,6 +32,7 @@ class urlparse:
 		logger.info('Parsed url hostname: %s', hostname)
 		return hostname
 
+	@staticmethod
 	def pathname(url):
 		pathname = re.sub(r'https:?:\/\/', '', url)
 		pathname = re.sub(r'^.*?/', '', pathname)
@@ -41,6 +44,7 @@ class urlparse:
 		logger.info('Parsed url pathname: %s', pathname)
 		return pathname
 
+	@staticmethod
 	def query(url):
 		query = None
 		try:
@@ -52,6 +56,7 @@ class urlparse:
 		logger.info('Parsed url query: %s', query)
 		return query
 
+	@staticmethod
 	def hash(url):
 		hashstring = None
 		try:
@@ -63,6 +68,7 @@ class urlparse:
 		logger.info('Parsed url hash: %s', hashstring)
 		return hashstring
 
+	@staticmethod
 	def queryToObject(query):
 		obj = {}
 		if len(query) > 0 and query[0] == '?':

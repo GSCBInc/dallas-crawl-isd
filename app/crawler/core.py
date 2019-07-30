@@ -1,5 +1,9 @@
 from app.http.utils import client
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 class crawlbot:
 
 	def __init__(self):
@@ -14,5 +18,5 @@ class crawlbot:
 	def display_id(self):
 		print(self.id)
 
-	def crawl(self, url):
-		print()
+	def index(self, url):
+		logger.info('Indexing url: %s', url.to_string())

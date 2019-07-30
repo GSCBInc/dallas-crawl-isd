@@ -5,11 +5,8 @@ logger = logging.getLogger(__name__)
 
 class client:
 
-	def __init__(self):
-		self.request = None
-
-	def send(self, request):
-		self.response = None
+	def send(request):
+		response = None
 
 class urlparse:
 
@@ -81,3 +78,13 @@ class urlparse:
 
 		logger.info('Parsed query object: %s', obj)
 		return obj
+
+	@staticmethod
+	def objectToQuery(obj):
+		query = '?'
+		delim = ''
+		for key in obj:
+			query += (delim + key + '=' + str(obj[key]))
+			delim = '&'
+
+		return query

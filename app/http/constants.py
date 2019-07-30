@@ -1,0 +1,8 @@
+
+class METHOD_NAMES: 
+
+	GET = 'GET'
+	PUT = 'PUT'
+	POST = 'POST'
+	DELETE = 'DELETE'
+	

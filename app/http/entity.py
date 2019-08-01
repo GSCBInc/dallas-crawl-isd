@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class Request:
 
-	def __init__(self, method, url):
+	def __init__(self, method=Method.GET, url):
 		self.method = method
 		self.body = None
 		self.url = url

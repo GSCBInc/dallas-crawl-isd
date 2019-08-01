@@ -3,11 +3,6 @@ import re
 
 logger = logging.getLogger(__name__)
 
-class client:
-
-	def send(request):
-		response = None
-
 class urlparse:
 
 	@staticmethod

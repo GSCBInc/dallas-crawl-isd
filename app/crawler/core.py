@@ -1,22 +1,14 @@
-from app.http.utils import client
-
 import logging
+import urllib
 
 logger = logging.getLogger(__name__)
+request = urllib.request
 
 class crawlbot:
 
-	def __init__(self):
-		self.id = None
-
-	def set_id(self, id):
-		self.id = id
-
-	def get_id(self):
-		return self.id
-
-	def display_id(self):
-		print(self.id)
-
 	def index(self, url):
 		logger.info('Indexing url: %s', url.to_string())
+
+		response = request.urlopen(url.to_string()).read()
+		response_as_string = response.decode('utf-8')
+		

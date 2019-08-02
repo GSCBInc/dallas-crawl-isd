@@ -6,29 +6,30 @@ class Element:
 		self.parent = parent
 		self.attributes = {}
 		self.children = []
-		self.index = 0
+		self.index = index
 
-	def setAttribute(self, name, value):
+	def set_attribute(self, name, value):
 		self.attributes[name] = value
 
-	def getAttribute(self, name):
+	def get_attribute(self, name):
 		return self.attributes[name]
 
-	def setParent(self, parent):
+	def set_parent(self, parent):
 		self.parent = parent
 
-	def getParent(self):
+	def get_parent(self):
 		return self.parent
 
-	def addChild(self, element):
-		element.setIndex(len(self.children))
-		self.children.append(element)
+	def add_child(self, child):
+		child.set_index(len(self.children))
+		self.children.append(child)
 
-	def getChild(self, index):
+	def get_child(self, index):
 		return self.children[index]
 
-	def setIndex(self, index):
+	def set_index(self, index):
 		self.index = index
+
 
 class Text:
 
@@ -37,26 +38,14 @@ class Text:
 		self.index = index
 		self.data = data
 
-	def setIndex(self, index):
+	def set_index(self, index):
 		self.index = index
 
-	def getData():
+	def get_data(self):
 		return self.data
 
-	def setParent(self, parent):
+	def set_parent(self, parent):
 		self.parent = parent
 
-	def getParent(self):
+	def get_parent(self):
 		return self.parent
-
-class DOM:
-
-	def __init__(self):
-		self.children = []
-
-	def addChild(self, element):
-		element.setIndex(len(self.children))
-		self.children.append(element)
-
-	def getChild(self, index):
-		return self.children[index]

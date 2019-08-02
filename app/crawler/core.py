@@ -1,14 +1,22 @@
+from app.http.apis import RestClient
+from app.html.utils import Parser
+
 import logging
-import urllib
 
 logger = logging.getLogger(__name__)
-request = urllib.request
 
-class crawlbot:
+
+class CrawlBot:
+
+	def __init__(self):
+		self.index_status = None
 
 	def index(self, url):
-		logger.info('Indexing url: %s', url.to_string())
+		self.index_status = None
+		parser = Parser()
 
-		response = request.urlopen(url.to_string()).read()
-		response_as_string = response.decode('utf-8')
-		
+		html_text = RestClient.get_html(url.to_string())
+
+		logger.info('Transforming html text to dom nodes')
+		dom = parser.to_dom(html_text)
+		logger.info('Finished dom transformation')

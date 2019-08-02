@@ -3,11 +3,12 @@ import re
 
 logger = logging.getLogger(__name__)
 
-class urlparse:
+
+class UrlParse:
 
 	@staticmethod
 	def protocol(url):
-		protocol = None
+
 		try:
 			protocol = 'https' if url.index('https://') == 0 else 'http'
 		except ValueError:
@@ -18,15 +19,15 @@ class urlparse:
 
 	@staticmethod
 	def hostname(url):
-		hostname = re.sub(r'https?:\/\/', '', url)
-		hostname = re.sub(r'\/.*', '', hostname)
+		hostname = re.sub(r'https?://', '', url)
+		hostname = re.sub(r'/.*', '', hostname)
 
 		logger.info('Parsed url hostname: %s', hostname)
 		return hostname
 
 	@staticmethod
 	def pathname(url):
-		pathname = re.sub(r'https:?:\/\/', '', url)
+		pathname = re.sub(r'https:?://', '', url)
 		pathname = re.sub(r'^.*?/', '', pathname)
 		pathname = re.sub(r'\?.*', '', pathname)
 
@@ -38,7 +39,7 @@ class urlparse:
 
 	@staticmethod
 	def query(url):
-		query = None
+
 		try:
 			index = url.index('?')
 			query = url[index:len(url)]
@@ -50,36 +51,36 @@ class urlparse:
 
 	@staticmethod
 	def hash(url):
-		hashstring = None
+
 		try:
 			index = url.index('#')
-			hashstring = url[index:len(url)]
+			hash_string = url[index:len(url)]
 		except ValueError:
-			hashstring = ''
+			hash_string = ''
 
-		logger.info('Parsed url hash: %s', hashstring)
-		return hashstring
+		logger.info('Parsed url hash: %s', hash_string)
+		return hash_string
 
 	@staticmethod
-	def queryToObject(query):
+	def to_object(query):
 		obj = {}
 		if len(query) > 0 and query[0] == '?':
 			query = query[1:len(query)]
 			tokens = query.split('&')
 
 			for t in tokens:
-				keyvaluepair = t.split('=')
-				obj[keyvaluepair[0]] = keyvaluepair[1]
+				key_value_pair = t.split('=')
+				obj[key_value_pair[0]] = key_value_pair[1]
 
 		logger.info('Parsed query object: %s', obj)
 		return obj
 
 	@staticmethod
-	def objectToQuery(obj):
+	def to_query(obj):
 		query = '?'
-		delim = ''
+		delimiter = ''
 		for key in obj:
-			query += (delim + key + '=' + str(obj[key]))
-			delim = '&'
+			query += (delimiter + key + '=' + str(obj[key]))
+			delimiter = '&'
 
 		return query

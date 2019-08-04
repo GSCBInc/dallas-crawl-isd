@@ -28,12 +28,12 @@ class Application:
 		self.seed()
 
 		while is_running:
+			is_running = index < 46
 			page_index = int(self.url.get_query_param('PageIndex'))
 
 			self.crawler.crawl(self.url)
 			self.url.set_query_param('PageIndex', page_index + 1)
 
-			is_running = index < 10
 			index += 1
 
 

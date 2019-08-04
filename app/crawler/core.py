@@ -1,3 +1,4 @@
+from app.csv.utils import CsvWriter
 from app.http.apis import RestClient
 from app.html.utils import Parser
 from app.html.utils import Query
@@ -58,6 +59,8 @@ class CrawlBot:
 
 					logger.info('Constructed school object: %s', school)
 					schools.append(school)
+
+			CsvWriter.from_list(data=schools)
 
 	def crawl(self, url):
 		parser = Parser()

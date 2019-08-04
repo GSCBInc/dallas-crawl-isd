@@ -7,6 +7,7 @@ class Element:
 		self.attributes = {}
 		self.children = []
 		self.index = index
+		self.type = 'HTML'
 
 	def set_attribute(self, name, value):
 		self.attributes[name] = value
@@ -37,6 +38,7 @@ class Text:
 		self.parent = parent
 		self.index = index
 		self.data = data
+		self.type = 'TEXT'
 
 	def set_index(self, index):
 		self.index = index

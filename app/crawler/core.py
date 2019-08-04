@@ -25,12 +25,14 @@ class CrawlBot:
 
 	def extract_value(self, data_row, data_column):
 		data_column_value = ''
+		text_node = None
 		query_path = self.data_query_paths[data_column.get_data()]
 		if type(query_path) == list:
 			for query_item in query_path:
 				data_column_value += Query.get_element(data_row, query_item).get_data()
 		elif type(query_path) == str:
-			data_column_value = Query.get_element(data_row, query_path).get_data()
+			text_node = Query.get_element(data_row, query_path)
+			data_column_value = 'None Listed' if text_node is None else text_node.get_data()
 
 		return data_column_value
 

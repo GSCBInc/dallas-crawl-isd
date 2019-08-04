@@ -23,18 +23,18 @@ class Application:
 	def start(self):
 		logger.info('Application has started')
 		is_running = True
-		index = 0
+		page_index = 1
 
 		self.seed()
+		self.url.set_query_param('PageIndex', page_index)
 
 		while is_running:
-			is_running = index < 46
+			is_running = page_index < 46
 			page_index = int(self.url.get_query_param('PageIndex'))
 
 			self.crawler.crawl(self.url)
-			self.url.set_query_param('PageIndex', page_index + 1)
-
-			index += 1
+			page_index += 1
+			self.url.set_query_param('PageIndex', page_index)
 
 
 if __name__ == '__main__':

@@ -171,7 +171,7 @@ class Query:
 	@staticmethod
 	def get_by_index(element, index_value):
 		index = int(re.sub(r'[\[\]]', '', index_value))
-		return None if len(element.children) < index - 1 else element.children[index]
+		return None if len(element.children) <= index else element.children[index]
 
 	@staticmethod
 	def parse_tag(query):
